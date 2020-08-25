@@ -11,7 +11,7 @@ export default function ItemDashboard() {
 
     useEffect(() => {
         axiosAuth()
-        .get('items')
+        .get('forsale')
         .then(res => {
             setItems(res.data)
             setDependency(false)

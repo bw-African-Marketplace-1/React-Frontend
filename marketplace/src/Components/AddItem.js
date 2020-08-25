@@ -3,7 +3,7 @@ import {axiosAuth} from '../utils/axiosAuth';
 
 const AddItem = (props) => {
     const [item, setItem] = useState({
-        name: '',
+        item: '',
         price: '',
         category: '',
         location: '',
@@ -18,22 +18,22 @@ const AddItem = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axiosAuth()
-        .post('items', item)
+        .post('forsale', item)
         .then(res => {console.log(res.data)})
         .catch(err => console.log(err))
-        props.history.push('/items')
+        props.history.push('/marketplace')
     }
 
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="item">Name</label>
                 <input 
                     onChange={handleChanges}
                     type='text'
-                    value={item.name}
+                    value={item.item}
                     placeholder="Name"
-                    name="name"
+                    name="item"
                     required>
                 </input>
 

@@ -19,7 +19,7 @@ const SignUp = props => {
         e.preventDefault();
         setSignUpInfo({...signUpInfo});
         axios
-        .post('/auth/register', signUpInfo)
+        .post('auth/register', signUpInfo)
         .then(res => {
             props.history.push('/');
         })

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {axiosAuth} from '../utils/axiosAuth';
  
 const initialItem = {
-    name: '',
+    item: '',
     price: '',
     category: '',
     location: '',
@@ -22,7 +22,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
     const saveUpdate = e => {
         e.preventDefault();
         axiosAuth()
-        .put(`items/${itemToUpdate.id}`, itemToUpdate)
+        .put(`forsale/${itemToUpdate.id}`, itemToUpdate)
         .then(res => {
             console.log(res.data)
             setDependency(true)
@@ -33,7 +33,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
     const deleteItem = item => {
         
         axiosAuth()
-        .delete(`items/${itemToUpdate.id}`, item)
+        .delete(`forsale/${itemToUpdate.id}`, item)
         .then(res => {
             console.log(res.data)
             updateItems(items.filter((item) => item.id !== itemToUpdate.id))
@@ -65,7 +65,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
                         <input
                         onChange={e =>
                         setItemToUpdate({ ...itemToUpdate, name: e.target.value})}
-                        value={itemToUpdate.name}
+                        value={itemToUpdate.item}
                         />
                     </label>
 

@@ -22,7 +22,7 @@ export default function Login(props) {
         e.preventDefault();
         // axiosWithAuth()
         axios
-        .post('', login)
+        .post('auth/login', login)
         .then(res => {
             console.log(res);
             window.localStorage.setItem('token', res.data.payload)
