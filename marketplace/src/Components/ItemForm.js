@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {axiosAuth} from '../utils/axiosAuth';
  
 const initialItem = {
-    item: '',
+    name: '',
     price: '',
     category: '',
     location: '',
@@ -65,7 +65,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
                         <input
                         onChange={e =>
                         setItemToUpdate({ ...itemToUpdate, name: e.target.value})}
-                        value={itemToUpdate.item}
+                        value={itemToUpdate.name}
                         />
                     </label>
 
