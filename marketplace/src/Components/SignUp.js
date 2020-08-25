@@ -64,6 +64,7 @@ const SignUp = props => {
                 ></input>
                 <br/>
                 <br/>
+                <button>Sign Up</button>
             </form>
 
             Already have an account <Link to='/login'>Log In</Link>
