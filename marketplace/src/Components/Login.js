@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-// import {axiosWithAuth} from '../utils/axiosAuth';
-import axios from 'axios';
+import {axiosAuth} from '../utils/axiosAuth';
+
 
 export default function Login(props) {
 
@@ -20,12 +20,11 @@ export default function Login(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // axiosWithAuth()
-        axios
+        axiosAuth()
         .post('auth/login', login)
         .then(res => {
             console.log(res);
-            window.localStorage.setItem('token', res.data.payload)
+            window.localStorage.setItem('token', res.data.token)
             props.history.push('/marketplace')
         })   
     }

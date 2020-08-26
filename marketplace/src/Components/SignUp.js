@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from 'react-router-dom';
-// import {axiosWithAuth} from '../utils/axiosAuth';
-import axios from "axios";
+import {axiosAuth} from '../utils/axiosAuth';
+
 
 const SignUp = props => {
     const [signUpInfo, setSignUpInfo] = useState({
@@ -18,9 +18,10 @@ const SignUp = props => {
     const handleSubmit = e => {
         e.preventDefault();
         setSignUpInfo({...signUpInfo});
-        axios
+        axiosAuth()
         .post('auth/register', signUpInfo)
         .then(res => {
+            console.log(res)
             props.history.push('/');
         })
         .catch(err => console.log(err));  
@@ -73,3 +74,25 @@ const SignUp = props => {
 };
 
 export default SignUp;
+
+
+// import axios from 'axios';
+
+// export const FETCH_MARKET_DATA = 'FETCH_MARKET_DATA'
+// export const FETCH_MARKET_SUCCESS = 'FETCH_MARKET_SUCCESS'
+// export const FETCH_MARKET_FAIL = 'FETCH_MARKET_FAIL'
+
+// export const fetchMarket = () => (dispatch) => {
+//     distpatch({type:FETCH_MARKET_DATA})
+//     axios.get('forsale')
+//     .then(res => {
+//         console.log('get', res.data);
+//         dispatch({type: FETCH_MARKET_SUCCESS, payload: res.data})
+//     })
+//     .catch(err => {
+//         console.log('error', err);
+//         dispatch({type: FETCH_MARKET_FAIL, payload: err})
+//     })
+// }
+
+// make reducers

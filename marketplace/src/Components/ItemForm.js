@@ -6,7 +6,8 @@ const initialItem = {
     price: '',
     category: '',
     location: '',
-    description: ''
+    description: '',
+    business_id: ''
 }
 
 export default function ItemForm({items, updateItems, setDependency}) {
@@ -91,7 +92,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
                         Location:
                         <input
                         onChange={e =>
-                        setItemToUpdate({ ...itemToUpdate, name: e.target.location})}
+                        setItemToUpdate({ ...itemToUpdate, location: e.target.location})}
                         value={itemToUpdate.location}
                         />
                     </label>
@@ -100,8 +101,17 @@ export default function ItemForm({items, updateItems, setDependency}) {
                         Description:
                         <input
                         onChange={e =>
-                        setItemToUpdate({ ...itemToUpdate, name: e.target.description})}
+                        setItemToUpdate({ ...itemToUpdate, description: e.target.description})}
                         value={itemToUpdate.description}
+                        />
+                    </label>
+
+                    <label>
+                        Business ID:
+                        <input
+                        onChange={e =>
+                        setItemToUpdate({ ...itemToUpdate, name: e.target.description})}
+                        value={itemToUpdate.business_id}
                         />
                     </label>
                     <div>
