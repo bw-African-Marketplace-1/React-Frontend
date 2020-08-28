@@ -28,40 +28,43 @@ const SignUp = props => {
     };
 
     return (
-        <div>
-            <h1>Welcome to the African Marketplace!</h1>
-            <h3>Sign Up</h3>
+        <div className='login'>
+            <h1 className="headline">Welcome to the African Marketplace!</h1>
             <form onSubmit={handleSubmit}>
                 <input
                 label='Name'
                 id='name'
                 name='name'
-                placeholder='name'
+                placeholder='Name'
                 onChange={handleChange}
+                className="input"
                 ></input>
                 <br/>
                 <input
                 label='Email'
                 id='email'
                 name='email'
-                placeholder='email'
+                placeholder='Email'
                 onChange={handleChange}
+                className="input"
                 ></input>
                 <br/>
                 <input
                 label='Username'
                 id='username'
                 name='username'
-                placeholder='username'
+                placeholder='Username'
                 onChange={handleChange}
+                className="input"
                 ></input>
                 <br/>
                 <input
                 label='Password'
                 id='password'
                 name='password'
-                placeholder='password'
+                placeholder='Password'
                 onChange={handleChange}
+                className="input"
                 ></input>
                 <br/>
                 <br/>

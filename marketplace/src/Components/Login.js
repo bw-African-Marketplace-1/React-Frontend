@@ -30,8 +30,8 @@ export default function Login(props) {
     }
 
     return(
-        <div>
-            <h1>Welcome to the African Marketplace!</h1>
+        <div className="login">
+            <h1 className="headline">Welcome to the African Marketplace!</h1>
             <form onSubmit={handleSubmit}>
                 <input
                 type='text'
@@ -49,13 +49,13 @@ export default function Login(props) {
                 label='password'
                 value={login.password}
                 onChange={handleChange}
-                Placeholder="password"
+                placeholder="Password"
                 className='input'
                 ></input>
 
                 <button>Login</button>
             </form>
-            Don't have an account? <Link to='/signup'>Sign Up</Link>
+            New to the Marketplace?<Link to='/signup'>Sign Up</Link>
         </div>
     )
 }

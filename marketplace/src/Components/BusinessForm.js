@@ -1,18 +1,16 @@
 import React, {useState} from 'react';
 import {axiosAuth} from '../utils/axiosAuth';
 import {connect} from 'react-redux';
-import {fetchMarket} from '../actions/marketActions';
+import {fetchBusiness} from '../actions/marketActions';
  
 const initialItem = {
     name: '',
-    price: '',
-    category: '',
+    user_id: '',
     location: '',
     description: '',
-    business_id: ''
 }
 
-function ItemForm({items, setDependency, fetchMarket}) {
+function BusinessForm({businesses, setDependency, fetchBusiness}) {
     
     const [updating, setUpdating] = useState(false);
     const[itemToUpdate, setItemToUpdate] = useState(initialItem);
@@ -25,10 +23,10 @@ function ItemForm({items, setDependency, fetchMarket}) {
     const saveUpdate = e => {
         e.preventDefault();
         axiosAuth()
-        .put(`forsale/${itemToUpdate.id}`, itemToUpdate)
+        .put(`business/${itemToUpdate.id}`, itemToUpdate)
         .then(res => {
             console.log(res.data)
-            fetchMarket()
+            fetchBusiness()
             setDependency(true)
         })
         .catch(err => console.log(err))
@@ -37,17 +35,17 @@ function ItemForm({items, setDependency, fetchMarket}) {
     const deleteItem = item => {
         
         axiosAuth()
-        .delete(`forsale/${itemToUpdate.id}`, item)
+        .delete(`business/${itemToUpdate.id}`, item)
         .then(res => {
             console.log(res.data)
-            fetchMarket()
+            fetchBusiness()
         })
     }
             
     return (
         <div className="items-list">
             <ul className="organized">
-                {items.map(item => (
+                {businesses.map(item => (
                     <li key={item.name} onClick={() => editItem(item)} className="edit-items">
                         <span className='update'>
                             <span className='delete' onClick={e => {
@@ -74,20 +72,11 @@ function ItemForm({items, setDependency, fetchMarket}) {
                     </label>
 
                     <label>
-                        Price:
+                        User ID:
                         <input
                         onChange={e =>
                         setItemToUpdate({ ...itemToUpdate, price: e.target.value})}
-                        value={itemToUpdate.price}
-                        />
-                    </label>
-
-                    <label>
-                        Category:
-                        <input
-                        onChange={e =>
-                        setItemToUpdate({ ...itemToUpdate, category: e.target.value})}
-                        value={itemToUpdate.category}
+                        value={itemToUpdate.user_id}
                         />
                     </label>
 
@@ -109,14 +98,6 @@ function ItemForm({items, setDependency, fetchMarket}) {
                         />
                     </label>
 
-                    <label>
-                        Business ID:
-                        <input
-                        onChange={e =>
-                        setItemToUpdate({ ...itemToUpdate, business_id: e.target.value})}
-                        value={itemToUpdate.business_id}
-                        />
-                    </label>
                     <div>
                         <button type='submit'>Update</button>
                         <button onClick={() => setUpdating(false)}>Cancel</button>
@@ -130,10 +111,10 @@ function ItemForm({items, setDependency, fetchMarket}) {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items,
+        businesses: state.businesses,
         isFetching: state.isFetching,
         error: state.error
     }
 }
 
-export default connect(mapStateToProps, {fetchMarket})(ItemForm)
+export default connect(mapStateToProps, {fetchBusiness})(BusinessForm)
