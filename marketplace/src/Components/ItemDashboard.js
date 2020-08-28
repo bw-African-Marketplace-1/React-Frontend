@@ -2,29 +2,25 @@ import React, {useState, useEffect} from "react";
 
 import ItemForm from './ItemForm';
 import ItemList from './ItemsList';
-import {axiosAuth} from '../utils/axiosAuth';
+// import {axiosAuth} from '../utils/axiosAuth';
+import {fetchMarket} from '../actions/marketActions';
+import {connect} from 'react-redux';
 
-export default function ItemDashboard() {
+function ItemDashboard(props) {
 
-    const [items, setItems] = useState([]);
+    
     const [dependency, setDependency] = useState(false)
 
     useEffect(() => {
-        axiosAuth()
-        .get('forsale')
-        .then(res => {
-            setItems(res.data)
-            setDependency(false)
-        })
-        .catch(err => {
-            console.log(err.response)
-        })
+       props.fetchMarket()
     }, [dependency])
 
     return(
         <div className="dash">
-            <ItemForm items={items} updateItems={setItems} setDependency={setDependency} />
-            <ItemList items={items} />
+            <ItemForm  setDependency={setDependency} />
+            <ItemList  />
         </div>
     )
 }
+
+export default connect(null, {fetchMarket})(ItemDashboard)

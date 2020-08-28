@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react';
 import ItemCard from './ItemCard';
 import {connect} from 'react-redux';
-import {fetchMarket} from '../actions/marketActions';
+
 
 const ItemList = (props) => {
-    useEffect(() => {
-        props.fetchMarket()
-    }, [])
+   
 
     return (
         <div className="card-container">
@@ -25,7 +23,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchMarket})(ItemList)
+export default connect(mapStateToProps, {})(ItemList)
 
 
 

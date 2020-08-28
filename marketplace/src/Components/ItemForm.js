@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {axiosAuth} from '../utils/axiosAuth';
+import {connect} from 'react-redux';
+import {fetchMarket} from '../actions/marketActions';
  
 const initialItem = {
     name: '',
@@ -10,8 +12,8 @@ const initialItem = {
     business_id: ''
 }
 
-export default function ItemForm({items, updateItems, setDependency}) {
-
+function ItemForm({items, setDependency, fetchMarket}) {
+    
     const [updating, setUpdating] = useState(false);
     const[itemToUpdate, setItemToUpdate] = useState(initialItem);
 
@@ -37,10 +39,10 @@ export default function ItemForm({items, updateItems, setDependency}) {
         .delete(`forsale/${itemToUpdate.id}`, item)
         .then(res => {
             console.log(res.data)
-            updateItems(items.filter((item) => item.id !== itemToUpdate.id))
+            fetchMarket()
         })
     }
-
+            
     return (
         <div className="items-list">
             <ul className="organized">
@@ -92,7 +94,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
                         Location:
                         <input
                         onChange={e =>
-                        setItemToUpdate({ ...itemToUpdate, location: e.target.location})}
+                        setItemToUpdate({ ...itemToUpdate, location: e.target.value})}
                         value={itemToUpdate.location}
                         />
                     </label>
@@ -101,7 +103,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
                         Description:
                         <input
                         onChange={e =>
-                        setItemToUpdate({ ...itemToUpdate, description: e.target.description})}
+                        setItemToUpdate({ ...itemToUpdate, description: e.target.value})}
                         value={itemToUpdate.description}
                         />
                     </label>
@@ -110,7 +112,7 @@ export default function ItemForm({items, updateItems, setDependency}) {
                         Business ID:
                         <input
                         onChange={e =>
-                        setItemToUpdate({ ...itemToUpdate, name: e.target.description})}
+                        setItemToUpdate({ ...itemToUpdate, business_id: e.target.value})}
                         value={itemToUpdate.business_id}
                         />
                     </label>
@@ -124,3 +126,13 @@ export default function ItemForm({items, updateItems, setDependency}) {
     )
 
 }
+
+const mapStateToProps = (state) => {
+    return {
+        items: state.items,
+        isFetching: state.isFetching,
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps, {fetchMarket})(ItemForm)

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {axiosAuth} from '../utils/axiosAuth';
+import { fetchMarket } from '../actions/marketActions';
 
 const AddItem = (props) => {
     const [item, setItem] = useState({
@@ -20,7 +21,9 @@ const AddItem = (props) => {
         e.preventDefault();
         axiosAuth()
         .post('forsale', item)
-        .then(res => {console.log(res.data)})
+        .then(res => {
+            console.log(res.data)
+            fetchMarket()})
         .catch(err => console.log(err))
         props.history.push('/marketplace')
     }
