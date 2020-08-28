@@ -13,6 +13,7 @@ const NavMenu = () => {
         <a href="/login">Login</a> | 
         <a href="/signup">Register</a>
         <Link to='/add'>Add Item</Link>
+        <Link to='/addBusiness'>Add Business</Link>
         <Link to='/marketplace'>MarketPlace</Link>
         <Link to='/login' onClick={signOut}>Sign Out</Link>
     </div>

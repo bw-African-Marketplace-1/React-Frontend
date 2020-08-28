@@ -1,29 +1,24 @@
 import React, {useState} from 'react';
 import {axiosAuth} from '../utils/axiosAuth';
-import { fetchMarket } from '../actions/marketActions';
 
-const AddItem = (props) => {
-    const [item, setItem] = useState({
+const AddBusiness = (props) => {
+    const [business, setBusiness] = useState({
         name: '',
-        price: '',
-        category: '',
         location: '',
         description: '',
-        business_id: ''
+        user_id: ''
     })
 
     const handleChanges = (e) => {
-        setItem({...item, [e.target.name]: e.target.value})
-        console.log(item)
+        setBusiness({...business, [e.target.name]: e.target.value})
+        console.log(business)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axiosAuth()
-        .post('forsale', item)
-        .then(res => {
-            console.log(res.data)
-            fetchMarket()})
+        .post('business', business)
+        .then(res => {console.log(res.data)})
         .catch(err => console.log(err))
         props.history.push('/marketplace')
     }
@@ -35,29 +30,19 @@ const AddItem = (props) => {
                 <input 
                     onChange={handleChanges}
                     type='text'
-                    value={item.item}
+                    value={business.name}
                     placeholder="Name"
                     name="name"
                     required>
                 </input>
 
-                <label htmlFor="price">Price</label>
+                <label htmlFor="user_id">Id Number</label>
                 <input 
                     onChange={handleChanges}
                     type='number'
-                    value={item.price}
-                    placeholder="Price"
-                    name="price"
-                    required>
-                </input>
-
-                <label htmlFor="category">Category</label>
-                <input 
-                    onChange={handleChanges}
-                    type='text'
-                    value={item.category}
-                    placeholder="Category"
-                    name="category"
+                    value={business.user_id}
+                    placeholder="ID"
+                    name="user_id"
                     required>
                 </input>
 
@@ -65,7 +50,7 @@ const AddItem = (props) => {
                 <input 
                     onChange={handleChanges}
                     type='text'
-                    value={item.location}
+                    value={business.location}
                     placeholder="Location"
                     name="location"
                     required>
@@ -75,25 +60,15 @@ const AddItem = (props) => {
                 <input 
                     onChange={handleChanges}
                     type='text'
-                    value={item.description}
+                    value={business.description}
                     placeholder="Description"
                     name="description"
                     required>
                 </input>
-
-                <label htmlFor="business_id">Business ID</label>
-                <input 
-                    onChange={handleChanges}
-                    type='number'
-                    value={item.business_id}
-                    placeholder="Business ID"
-                    name="business_id"
-                    required>
-                </input>
-            <button>Add Item</button>
+            <button>Add Business</button>
             </form>
         </div>
     )
  }
 
- export default AddItem
+ export default AddBusiness;

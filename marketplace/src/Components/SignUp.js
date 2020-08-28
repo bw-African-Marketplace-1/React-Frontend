@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link} from 'react-router-dom';
-// import {axiosWithAuth} from '../utils/axiosAuth';
-import axios from "axios";
+import {axiosAuth} from '../utils/axiosAuth';
+
 
 const SignUp = props => {
     const [signUpInfo, setSignUpInfo] = useState({
@@ -18,9 +18,10 @@ const SignUp = props => {
     const handleSubmit = e => {
         e.preventDefault();
         setSignUpInfo({...signUpInfo});
-        axios
-        .post('/auth/register', signUpInfo)
+        axiosAuth()
+        .post('auth/register', signUpInfo)
         .then(res => {
+            console.log(res)
             props.history.push('/');
         })
         .catch(err => console.log(err));  
@@ -64,6 +65,7 @@ const SignUp = props => {
                 ></input>
                 <br/>
                 <br/>
+                <button>Sign Up</button>
             </form>
 
             Already have an account <Link to='/login'>Log In</Link>
@@ -72,3 +74,4 @@ const SignUp = props => {
 };
 
 export default SignUp;
+
