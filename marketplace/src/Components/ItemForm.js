@@ -28,6 +28,7 @@ function ItemForm({items, setDependency, fetchMarket}) {
         .put(`forsale/${itemToUpdate.id}`, itemToUpdate)
         .then(res => {
             console.log(res.data)
+            fetchMarket()
             setDependency(true)
         })
         .catch(err => console.log(err))
