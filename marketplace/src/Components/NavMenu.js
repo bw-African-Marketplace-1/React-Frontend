@@ -9,13 +9,14 @@ const NavMenu = () => {
 
     return (
     <div className='header'>
-        <a href="/">Home</a> | 
-        <a href="/login">Login</a> | 
-        <a href="/signup">Register</a>
-        <Link to='/add'>Add Item</Link>
-        <Link to='/addBusiness'>Add Business</Link>
-        <Link to='/marketplace'>MarketPlace</Link>
-        <Link to='/login' onClick={signOut}>Sign Out</Link>
+        <Link className="nav-link" to="/">Home</Link> | 
+        <Link className="nav-link" to="/login">Login</Link> | 
+        <Link className="nav-link" to="/signup">Register</Link> |
+        <Link className="nav-link" to='/add'>Add Item</Link> |
+        <Link className="nav-link" to='/addBusiness'>Add Business</Link> |
+        <Link className="nav-link" to='/marketplace'>MarketPlace</Link> |
+        <Link className="nav-link" to='/contributors'>Contributors</Link> |
+        <Link className="nav-link" to='/login' onClick={signOut}>Sign Out</Link>
     </div>
         )
 }

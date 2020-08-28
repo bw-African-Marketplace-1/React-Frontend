@@ -29,9 +29,10 @@ const AddItem = (props) => {
     }
 
     return(
-        <div>
+        <div className="add">
+            <h1 className="headline">Add Your Item To The MarketPlace</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Name </label>
                 <input 
                     onChange={handleChanges}
                     type='text'
@@ -40,7 +41,7 @@ const AddItem = (props) => {
                     name="name"
                     required>
                 </input>
-
+                <br/>
                 <label htmlFor="price">Price</label>
                 <input 
                     onChange={handleChanges}
@@ -50,7 +51,7 @@ const AddItem = (props) => {
                     name="price"
                     required>
                 </input>
-
+                <br/>
                 <label htmlFor="category">Category</label>
                 <input 
                     onChange={handleChanges}
@@ -60,7 +61,7 @@ const AddItem = (props) => {
                     name="category"
                     required>
                 </input>
-
+                <br/>
                 <label htmlFor="location">Location</label>
                 <input 
                     onChange={handleChanges}
@@ -70,7 +71,7 @@ const AddItem = (props) => {
                     name="location"
                     required>
                 </input>
-
+                <br/>
                 <label htmlFor="description">Description</label>
                 <input 
                     onChange={handleChanges}
@@ -80,8 +81,8 @@ const AddItem = (props) => {
                     name="description"
                     required>
                 </input>
-
-                <label htmlFor="business_id">Business ID</label>
+                <br/>
+                <label  htmlFor="business_id">Business ID</label>
                 <input 
                     onChange={handleChanges}
                     type='number'
@@ -90,6 +91,7 @@ const AddItem = (props) => {
                     name="business_id"
                     required>
                 </input>
+                <br/>
             <button>Add Item</button>
             </form>
         </div>

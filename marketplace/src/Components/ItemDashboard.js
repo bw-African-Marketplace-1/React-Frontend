@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 import ItemForm from './ItemForm';
 import ItemList from './ItemsList';
-// import {axiosAuth} from '../utils/axiosAuth';
+
 import {fetchMarket} from '../actions/marketActions';
 import {connect} from 'react-redux';
 

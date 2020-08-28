@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import ItemCard from './ItemCard';
 import {connect} from 'react-redux';
 
@@ -26,19 +26,3 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {})(ItemList)
 
 
-
-  
-// import React from 'react';
-
-// import ItemCard from './ItemCard';
-
-// export default function ItemList({items}) {
-
-//     return (
-//         <div className="card-container">
-//             {items.map(item => (
-//                 <ItemCard key={item.id} item={item} />
-//             ))}
-//         </div>
-//     )
-// }

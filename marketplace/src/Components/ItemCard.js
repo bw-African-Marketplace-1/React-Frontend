@@ -6,11 +6,11 @@ export default function ItemCard({item}) {
 
     return (
         <div className="card">
-            <h1>{name}</h1>
-            <h1>{price}</h1>
-            <h3>{category}</h3>
-            <h3>{location}</h3>
-            <h3>{description}</h3>
+            <h1>Item: {name}</h1>
+            <h3>Price: ${price}</h3>
+            <h3>Category: {category}</h3>
+            <h3>Location: {location}</h3>
+            <h3>Description: {description}</h3>
         </div>
     )
 }

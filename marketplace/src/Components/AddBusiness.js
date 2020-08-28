@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {axiosAuth} from '../utils/axiosAuth';
+import {fetchBusiness} from '../actions/marketActions';
 
 const AddBusiness = (props) => {
     const [business, setBusiness] = useState({
@@ -18,13 +19,16 @@ const AddBusiness = (props) => {
         e.preventDefault();
         axiosAuth()
         .post('business', business)
-        .then(res => {console.log(res.data)})
+        .then(res => {
+            console.log(res.data)
+            fetchBusiness()})
         .catch(err => console.log(err))
-        props.history.push('/marketplace')
+        props.history.push('/contributors')
     }
 
     return(
-        <div>
+        <div className='add'>
+            <h1 className='headline'>Add Your Business</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
                 <input 
@@ -35,7 +39,7 @@ const AddBusiness = (props) => {
                     name="name"
                     required>
                 </input>
-
+                <br/>
                 <label htmlFor="user_id">Id Number</label>
                 <input 
                     onChange={handleChanges}
@@ -45,7 +49,7 @@ const AddBusiness = (props) => {
                     name="user_id"
                     required>
                 </input>
-
+                <br/>
                 <label htmlFor="location">Location</label>
                 <input 
                     onChange={handleChanges}
@@ -55,7 +59,7 @@ const AddBusiness = (props) => {
                     name="location"
                     required>
                 </input>
-
+                <br/>
                 <label htmlFor="description">Description</label>
                 <input 
                     onChange={handleChanges}
@@ -65,6 +69,7 @@ const AddBusiness = (props) => {
                     name="description"
                     required>
                 </input>
+                <br/>
             <button>Add Business</button>
             </form>
         </div>
