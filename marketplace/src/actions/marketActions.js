@@ -1,5 +1,6 @@
 
-import axios from 'axios';
+// import axios from 'axios';
+import {axiosAuth} from '../utils/axiosAuth';
 
 export const FETCH_MARKET_DATA = 'FETCH_MARKET_DATA'
 export const FETCH_MARKET_SUCCESS = 'FETCH_MARKET_SUCCESS'
@@ -7,7 +8,7 @@ export const FETCH_MARKET_FAIL = 'FETCH_MARKET_FAIL'
 
 export const fetchMarket = () => (dispatch) => {
     dispatch({type:FETCH_MARKET_DATA}) 
-    axios.get('https://africanmarketplacept15.herokuapp.com/api/forsale')
+    axiosAuth().get('forsale')
     .then(res => {
         console.log('get request', res.data);
         dispatch({type: FETCH_MARKET_SUCCESS, payload: res.data})
@@ -25,7 +26,7 @@ export const FETCH_BUSINESS_FAIL = 'FETCH_BUSINESS_FAIL'
 export const fetchBusiness = () => (dispatch) => {
     dispatch({type:FETCH_BUSINESS_DATA})
     
-    axios.get('https://africanmarketplacept15.herokuapp.com/api/business')
+    axiosAuth().get('business')
     .then(res => {
         console.log('get request', res.data);
         dispatch({type: FETCH_BUSINESS_SUCCESS, payload: res.data})
